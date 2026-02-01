@@ -7,9 +7,11 @@ export default function Chatbot({ theme, language }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
-  const API_URL = 'https://himanshu708027-plantdisease.hf.space';
+  // ✅ UPDATED: Points to local proxy to avoid CORS errors
+  // This will route through the 'vercel.json' configuration
+  const API_URL = '/api'; 
+  
   const isDark = theme === 'dark';
-
   const messagesEndRef = useRef(null);
 
   // ✅ AUTO SCROLL
@@ -25,6 +27,8 @@ export default function Chatbot({ theme, language }) {
     setInput('');
 
     try {
+      // The request now goes to https://your-site.vercel.app/api/chat
+      // Vercel then forwards it to Hugging Face automatically
       const res = await axios.post(`${API_URL}/chat`, {
         message: userText,
         language: language
@@ -35,6 +39,7 @@ export default function Chatbot({ theme, language }) {
         { type: 'bot', text: res.data.reply }
       ]);
     } catch (err) {
+      console.error("Chat Error:", err); // Added console log for easier debugging
       setMessages(prev => [
         ...prev,
         {
