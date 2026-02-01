@@ -9,7 +9,7 @@ import ResultsPage from './components/ResultsPage';
 import Chatbot from './components/Chatbot';
 
 
-const API_URL = 'http://127.0.0.1:5000';
+const API_URL = 'https://himanshu708027-plantdisease.hf.space';
 
 
 function App() {
@@ -46,7 +46,7 @@ function App() {
 
   try {
     const res = await axios.post(
-      'http://127.0.0.1:5000/predict', 
+      'https://himanshu708027-plantdisease.hf.space/predict', 
       fd,
       { headers: { 'Content-Type': 'multipart/form-data' } }
     );
