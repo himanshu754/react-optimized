@@ -7,7 +7,7 @@ export default function Chatbot({ theme, language }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
-  const API_URL = 'http://127.0.0.1:5000';
+  const API_URL = 'https://himanshu708027-plantdisease.hf.space';
   const isDark = theme === 'dark';
 
   const messagesEndRef = useRef(null);
